@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Real Numbers — Interactive Lesson Deck</title><style>
+:root{--bg:#f5f7fb;--ink:#172033;--muted:#64748b;--card:#fff;--accent:#5b5bd6;--accent2:#e9e9ff;--good:#16845b;--bad:#c43d55;--border:#dbe1ea}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+#app{min-height:100vh;display:flex;flex-direction:column}.top{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:#fff;border-bottom:1px solid var(--border);gap:14px}.brand{font-weight:800}.progress{flex:1;max-width:420px;height:8px;background:#e8ebf1;border-radius:10px;overflow:hidden}.bar{height:100%;background:var(--accent);width:0}.main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;width:min(1200px,94%);margin:22px auto;flex:1}.deck{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:30px;min-height:620px;box-shadow:0 6px 24px #1720330b}.slide-title{font-size:clamp(26px,3vw,38px);margin:0 0 24px}.slide-content{font-size:18px;line-height:1.5}.nav{display:flex;justify-content:space-between;align-items:center;margin-top:22px}.nav button,.top button,.choice-grid button,.yesno,.root-grid button,.big-reveal,.calc-list button,.reveal-list button,.lightning button{border:1px solid var(--border);background:#fff;color:var(--ink);border-radius:10px;padding:11px 15px;cursor:pointer;font-weight:700}.nav button{background:var(--accent);color:#fff;border-color:var(--accent)}button:hover{filter:brightness(.97)}button:focus,input:focus,textarea:focus{outline:3px solid #bfc0ff;outline-offset:2px}.scratch{background:#fff;border:1px solid var(--border);border-radius:16px;padding:16px;display:flex;flex-direction:column;min-height:620px}.scratch h3{margin:0 0 5px}.scratch small{color:var(--muted)}#pad{flex:1;min-height:430px;border:1px dashed #c9d1df;border-radius:12px;background:#fbfcff;touch-action:none;cursor:crosshair;display:block;width:100%}.pad-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.pad-actions button{flex:1;padding:9px;border:1px solid var(--border);background:#fff;border-radius:9px;cursor:pointer;min-width:64px}.pad-actions button.active{background:var(--accent);color:#fff;border-color:var(--accent)}.formula,.giant-answer{font-size:30px;font-weight:800;text-align:center;margin:22px 0}.giant-number{font-size:80px;font-weight:900;text-align:center}.number-row,.pill-row,.decimal-grid{display:flex;gap:12px;flex-wrap:wrap}.number-row span,.pill-row span,.decimal-grid div{padding:14px 18px;border-radius:12px;background:#eef1f7;font-size:24px;font-weight:800}.choice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}.choice-grid.four{grid-template-columns:repeat(2,1fr)}.family{display:flex;justify-content:center}.family-level{padding:18px;border-radius:50%;text-align:center;font-weight:800}.real{background:#eef0ff}.rational{background:#e7f6ef}.integer{background:#fff1d7}.whole{background:#e9f2ff}.natural{background:#f5e8ff}.irrational{background:#ffe8ed;margin-top:15px}.ladder{font-size:20px;line-height:1.8;background:#f8f9fc;border:1px solid var(--border);padding:20px;border-radius:14px}.classify-grid,.sort-table{display:grid;gap:10px;margin:20px 0}.classify-grid{grid-template-columns:repeat(4,1fr)}.classify-grid div,.sort-table>div{padding:13px;background:#f8f9fc;border:1px solid var(--border);border-radius:10px}.sort-table>div{display:grid;grid-template-columns:1fr 1fr}.classify-grid input,input,textarea{width:100%;padding:11px;border:1px solid #cbd3df;border-radius:9px;font-size:16px}.answer-box{background:#f0f3ff;border-left:4px solid var(--accent);padding:15px;border-radius:10px;margin:18px 0}.key-idea{padding:15px;background:#fff7df;border-radius:12px;font-weight:800}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:15px}.good,.bad,.info,.example-box,.steps div,.boss>div,.challenge-list>div,.explain-card,.exit{padding:18px;border:1px solid var(--border);border-radius:12px;background:#fafbfe}.good{border-left:5px solid var(--good)}.bad{border-left:5px solid var(--bad)}.info{border-left:5px solid #5b8def}.lightning{display:grid;gap:12px}.lightning-item{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px;background:#f8f9fc;border-radius:10px}.lightning-item b{min-width:100px}.lightning-item span{font-weight:800}.root-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.root-grid button{font-size:22px;padding:20px}.calc-list,.problem-stack,.boss,.challenge-list{display:grid;gap:12px}.calc-list>div{display:grid;grid-template-columns:100px 100px 1fr;align-items:center;gap:10px;padding:12px;background:#f8f9fc;border-radius:10px}.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.match-grid div{padding:16px;background:#f8f9fc;border-radius:10px;font-size:22px;text-align:center}.math-steps,.steps{display:grid;gap:10px}.math-steps div{padding:14px;background:#f8f9fc;border-radius:10px}.estimate-visual{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:center;text-align:center}.estimate-visual div{padding:22px;border-radius:12px;background:#f0f3ff;font-size:24px;font-weight:800}.numberline{display:flex;align-items:center;gap:0;font-size:24px;font-weight:800;margin:35px 0}.numberline i{height:5px;flex:1;background:#aab4c5}.slider-wrap{display:flex;gap:12px;align-items:center}.slider-wrap input{flex:1}.mini-numberline{padding:20px;background:#f8f9fc;border-radius:10px;word-spacing:7px}.hidden{display:none}.explain-card textarea,.exit textarea{min-height:150px;margin-top:10px}.exit{display:grid;gap:10px}.top .counter{font-weight:700;white-space:nowrap}@media(max-width:800px){.main{grid-template-columns:1fr}.scratch{min-height:360px}.deck{min-height:500px;padding:20px}.classify-grid{grid-template-columns:1fr 1fr}.root-grid{grid-template-columns:1fr 1fr}.scratch #pad{min-height:220px}.top{flex-wrap:wrap}.progress{order:3;flex-basis:100%;max-width:none}.two-col{grid-template-columns:1fr}.choice-grid.four{grid-template-columns:1fr}.slide-content{font-size:16px}}
+</style></head>
+<body>
+<div id="app">
+  <header class="top">
+    <div class="brand">Real Numbers • Interactive Lesson</div>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <div class="counter" id="counter"></div>
+  </header>
+  <div class="main">
+    <section class="deck">
+      <h1 class="slide-title" id="slideTitle"></h1>
+      <div class="slide-content" id="slideContent"></div>
+      <div class="nav"><button id="prev" type="button">← Previous</button><button id="next" type="button">Next →</button></div>
+    </section>
+    <aside class="scratch">
+      <h3>✎ Scratchpad</h3>
+      <small>Draw with your mouse or stylus. Your working stays with the current slide while you move around the deck.</small>
+      <canvas id="pad" aria-label="Scratchpad drawing area"></canvas>
+      <div class="pad-actions">
+        <button id="penTool" type="button" class="active">✎ Pen</button>
+        <button id="eraserTool" type="button">🩹 Eraser</button>
+        <button id="clearPad" type="button">Clear</button>
+        <button id="savePad" type="button">Save</button>
+      </div>
+      <small id="saveStatus" aria-live="polite"></small>
+    </aside>
+  </div>
+</div>
+<script>
+const slides = [["🎯 Quick Diagnostic", "\n<h2>Which of these have you seen before?</h2>\n<div class=\"choice-grid\">\n  <button data-reveal=\"natural\">Natural numbers</button>\n  <button data-reveal=\"whole\">Whole numbers</button>\n  <button data-reveal=\"integer\">Integers</button>\n  <button data-reveal=\"rational\">Rational numbers</button>\n  <button data-reveal=\"irrational\">Irrational numbers</button>\n</div>\n<h3>Challenge</h3>\n<p>Put these in groups:</p>\n<div class=\"number-row\"><span>5</span><span>0</span><span>−4</span><span>¾</span><span>√2</span></div>\n<div class=\"answer-box\" id=\"diagnostic\">Tap a number set above to reveal its meaning.</div>\n"], ["🔢 The Number Family", "\n<div class=\"family\">\n  <div class=\"family-level real\">REAL NUMBERS\n    <div class=\"family-level rational\">RATIONAL\n      <div class=\"family-level integer\">INTEGERS\n        <div class=\"family-level whole\">WHOLE\n          <div class=\"family-level natural\">NATURAL</div>\n        </div>\n      </div>\n    </div>\n    <div class=\"family-level irrational\">IRRATIONAL</div>\n  </div>\n</div>\n<p class=\"formula\">Natural ⊂ Whole ⊂ Integers ⊂ Rational ⊂ Real</p>\n<div class=\"quiz-card\">\n  <p>If a number is a natural number, is it automatically an integer?</p>\n  <button class=\"yesno\" data-answer=\"yes\">YES</button>\n  <button class=\"yesno\" data-answer=\"no\">NO</button>\n  <div class=\"feedback\"></div>\n</div>\n<div class=\"quiz-card\">\n  <p>If a number is an integer, is it automatically rational?</p>\n  <button class=\"yesno\" data-answer=\"yes\">YES</button>\n  <button class=\"yesno\" data-answer=\"no\">NO</button>\n  <div class=\"feedback\"></div>\n</div>\n<div class=\"quiz-card\">\n  <p>If a number is rational, is it automatically an integer?</p>\n  <button class=\"yesno\" data-answer=\"yes\">YES</button>\n  <button class=\"yesno\" data-answer=\"no\">NO</button>\n  <div class=\"feedback\"></div>\n</div>\n<p><strong>Complete:</strong> 8 → ? → ? → ?</p>\n<div class=\"answer-box\">Natural → Whole → Integer → Rational → Real</div>\n"], ["🪜 Number Set Ladder", "\n<div class=\"ladder\">\n  <div>REAL</div>\n  <div>↳ RATIONAL</div>\n  <div>　↳ INTEGER</div>\n  <div>　　↳ WHOLE</div>\n  <div>　　　↳ NATURAL</div>\n  <div>　↳ Fractions / terminating decimals / repeating decimals</div>\n  <div>↳ IRRATIONAL</div>\n  <div>　↳ √2, √3, π, ...</div>\n</div>\n<div class=\"classify-grid\">\n  <div><b>−7</b><input data-correct=\"Integer\"></div>\n  <div><b>0</b><input data-correct=\"Whole\"></div>\n  <div><b>2.5</b><input data-correct=\"Rational\"></div>\n  <div><b>√5</b><input data-correct=\"Irrational\"></div>\n</div>\n<button class=\"check-inputs\">Check answers</button><div class=\"feedback\"></div>\n"], ["🎮 Sort the Numbers", "\n<p>Classify each number into the <strong>smallest appropriate set</strong>.</p>\n<div class=\"sort-table\">\n  <div><b>Number</b><b>Your answer</b></div>\n  <div><span>9</span><input data-correct=\"Natural\"></div>\n  <div><span>0</span><input data-correct=\"Whole\"></div>\n  <div><span>−6</span><input data-correct=\"Integer\"></div>\n  <div><span>⅔</span><input data-correct=\"Rational\"></div>\n  <div><span>0.75</span><input data-correct=\"Rational\"></div>\n  <div><span>√2</span><input data-correct=\"Irrational\"></div>\n</div>\n<button class=\"check-inputs\">Check answers</button><div class=\"feedback\"></div>\n<div class=\"answer-box\">−6 is an integer and also rational because −6 = −6/1.</div>\n"], ["🧠 Can One Number Have Many Labels?", "\n<div class=\"giant-number\">4</div>\n<p>How many number sets can 4 belong to?</p>\n<div class=\"reveal-list\">\n  <button data-toggle=\"Natural ✓\">Natural ✓</button>\n  <button data-toggle=\"Whole ✓\">Whole ✓</button>\n  <button data-toggle=\"Integer ✓\">Integer ✓</button>\n  <button data-toggle=\"Rational ✓\">Rational ✓</button>\n  <button data-toggle=\"Real ✓\">Real ✓</button>\n</div>\n<h3>What about −4?</h3>\n<div class=\"pill-row\"><span>Natural ✗</span><span>Whole ✗</span><span>Integer ✓</span><span>Rational ✓</span><span>Real ✓</span></div>\n<p class=\"key-idea\">A number can belong to several sets.</p>\n"], ["🕵️ Rational or Irrational?", "\n<div class=\"big-question\">Can it be written as <span class=\"fraction\">a / b</span> where a and b are integers and b ≠ 0?</div>\n<div class=\"two-col\">\n  <div class=\"good\"><h3>YES → RATIONAL</h3><p>½ &nbsp; −7 &nbsp; 0.25</p></div>\n  <div class=\"bad\"><h3>NO → IRRATIONAL</h3><p>√2 &nbsp; π</p></div>\n</div>\n<div class=\"scratch-prompt\">Classify: ⅝, √11, −3, π</div>\n"], ["⚡ Rational / Irrational Lightning Round", "\n<div class=\"lightning\">\n  <div class=\"lightning-item\"><b>1. 0.5</b><button data-classify=\"Rational\">Rational</button><button data-classify=\"Irrational\">Irrational</button><span></span></div>\n  <div class=\"lightning-item\"><b>2. √9</b><button data-classify=\"Rational\">Rational</button><button data-classify=\"Irrational\">Irrational</button><span></span></div>\n  <div class=\"lightning-item\"><b>3. √7</b><button data-classify=\"Rational\">Rational</button><button data-classify=\"Irrational\">Irrational</button><span></span></div>\n  <div class=\"lightning-item\"><b>4. π</b><button data-classify=\"Rational\">Rational</button><button data-classify=\"Irrational\">Irrational</button><span></span></div>\n  <div class=\"lightning-item\"><b>5. 0.121212...</b><button data-classify=\"Rational\">Rational</button><button data-classify=\"Irrational\">Irrational</button><span></span></div>\n</div>\n"], ["🚨 Trick Question", "\n<h2>Is √9 irrational?</h2>\n<button class=\"big-reveal\" id=\"root9\">Reveal</button>\n<div class=\"answer-box hidden\" id=\"root9answer\"><strong>√9 = 3</strong><br>3 = 3/1<br><br><strong>√9 is RATIONAL.</strong></div>\n<div class=\"key-idea\">A square root is not automatically irrational.</div>\n<h3>What about √16?</h3>\n<button class=\"big-reveal\" id=\"root16\">Reveal</button>\n<div class=\"answer-box hidden\" id=\"root16answer\">√16 = 4 → Rational</div>\n"], ["🧩 Perfect Square Detective", "\n<p>Which square roots are rational?</p>\n<div class=\"root-grid\">\n  <button data-root=\"2\">√4</button><button data-root=\"2.828\">√8</button>\n  <button data-root=\"5\">√25</button><button data-root=\"6\">√36</button>\n  <button data-root=\"7.071\">√50</button>\n</div>\n<div class=\"answer-box\" id=\"rootresult\">Select a square root.</div>\n<p><strong>Perfect squares:</strong> 4, 25, 36</p>\n"], ["🔢 Decimal Detective", "\n<div class=\"decimal-grid\">\n  <div>0.5</div><div>0.333333...</div><div>0.272727...</div><div>0.125</div>\n</div>\n<div class=\"two-col\">\n  <div class=\"good\"><h3>Terminating</h3><p>Stops.</p></div>\n  <div class=\"info\"><h3>Repeating</h3><p>Continues with a repeating pattern.</p></div>\n</div>\n<p class=\"key-idea\">Both terminating and repeating decimals are rational.</p>\n"], ["🎯 Fraction → Decimal", "\n<p>Predict before calculating: will the decimal terminate or repeat?</p>\n<div class=\"calc-list\">\n  <div><b>1/2</b><button data-calc=\"0.5\">Reveal</button><span></span></div>\n  <div><b>1/4</b><button data-calc=\"0.25\">Reveal</button><span></span></div>\n  <div><b>3/8</b><button data-calc=\"0.375\">Reveal</button><span></span></div>\n  <div><b>1/3</b><button data-calc=\"0.333...\">Reveal</button><span></span></div>\n</div>\n"], ["🧠 Decimal Challenge", "\n<div class=\"match-grid\">\n  <div>½</div><div>0.25</div>\n  <div>¼</div><div>0.5</div>\n  <div>⅓</div><div>0.333...</div>\n  <div>⅝</div><div>0.625</div>\n</div>\n<p>Match each fraction with its decimal, then identify which terminate and which repeat.</p>\n<div class=\"answer-box\">½ → 0.5 &nbsp; | &nbsp; ¼ → 0.25 &nbsp; | &nbsp; ⅓ → 0.333... &nbsp; | &nbsp; ⅝ → 0.625</div>\n"], ["🔄 Repeating Decimal → Fraction", "\n<div class=\"math-steps\">\n  <div><b>Challenge:</b> Convert 0.̅3 into a fraction.</div>\n  <div>Step 1: x = 0.̅3</div>\n  <div>Step 2: 10x = 3.̅3</div>\n  <div>Step 3: 10x − x = 3.̅3 − 0.̅3 → 9x = 3</div>\n  <div>Step 4: x = 3/9 = <strong>1/3</strong></div>\n</div>\n<p class=\"key-idea\">Why multiply by 10? Because one digit repeats.</p>\n"], ["🎮 Your Turn", "\n<div class=\"problem-stack\">\n  <div><b>A</b><span>0.̅6</span></div>\n  <div><b>B</b><span>0.̅27</span></div>\n  <div><b>C</b><span>0.̅12</span></div>\n</div>\n<p class=\"hint\">1 repeating digit → ×10 &nbsp;&nbsp; 2 repeating digits → ×100</p>\n<div class=\"answer-box\">A = 2/3 &nbsp; | &nbsp; B = 3/11 &nbsp; | &nbsp; C = 4/33</div>\n"], ["📏 Now: Estimating √", "\n<div class=\"estimate-visual\">\n  <div>4² = 16</div><div>20</div><div>5² = 25</div>\n</div>\n<p>16 &lt; 20 &lt; 25</p>\n<div class=\"formula\">4 &lt; √20 &lt; 5</div>\n<div class=\"key-idea\">Find the two perfect squares surrounding the number.</div>\n"], ["🪜 Estimation Steps", "\n<div class=\"steps\">\n  <div><b>1</b> Find the lower perfect square.</div>\n  <div><b>2</b> Find the higher perfect square.</div>\n  <div><b>3</b> Take their square roots.</div>\n  <div><b>4</b> Place √N between them.</div>\n</div>\n<div class=\"example-box\">√30<br><span>25 &lt; 30 &lt; 36</span><br><strong>5 &lt; √30 &lt; 6</strong></div>\n"], ["🎯 You Choose", "\n<h2>Estimate √50</h2>\n<div class=\"choice-grid four\">\n  <button data-correct-choice=\"false\">A. 5 &lt; √50 &lt; 6</button>\n  <button data-correct-choice=\"true\">B. 6 &lt; √50 &lt; 7</button>\n  <button data-correct-choice=\"false\">C. 7 &lt; √50 &lt; 8</button>\n  <button data-correct-choice=\"false\">D. 8 &lt; √50 &lt; 9</button>\n</div>\n<div class=\"feedback\"></div>\n<p class=\"answer-box\">49 &lt; 50 &lt; 64, so 7 &lt; √50 &lt; 8.</p>\n"], ["🔍 Nearest Integer", "\n<h2>Estimate √70 to the nearest integer.</h2>\n<div class=\"estimate-visual\"><div>8² = 64</div><div>70</div><div>9² = 81</div></div>\n<p>8 &lt; √70 &lt; 9</p>\n<p>70 is closer to 64 than 81.</p>\n<div class=\"giant-answer\">√70 ≈ 8</div>\n"], ["📍 Number Line Challenge", "\n<div class=\"numberline\"><span>4</span><i></i><span>5</span><i></i><span>6</span></div>\n<p>Where would √20 go?</p>\n<p>4 &lt; √20 &lt; 5</p>\n<div class=\"answer-box\">√20 ≈ 4.5</div>\n<div class=\"slider-wrap\"><input id=\"root20slider\" type=\"range\" min=\"40\" max=\"50\" value=\"45\"><output id=\"root20out\">4.5</output></div>\n"], ["🔬 Nearest Tenth", "\n<h2>Estimate √20 to the nearest tenth.</h2>\n<div class=\"formula\">√20 ≈ 4.472...</div>\n<div class=\"giant-answer\">√20 ≈ 4.5</div>\n<div class=\"mini-numberline\">4.0 ─ 4.1 ─ 4.2 ─ 4.3 ─ 4.4 ─ <strong>4.5</strong> ─ 4.6 ─ 4.7 ─ 4.8 ─ 4.9 ─ 5.0</div>\n"], ["🧊 Cube Roots", "\n<h2>Same idea!</h2>\n<p>Instead of 4² = 16, use 4³ = 64.</p>\n<div class=\"estimate-visual\"><div>4³ = 64</div><div>70</div><div>5³ = 125</div></div>\n<p class=\"formula\">4 &lt; ∛70 &lt; 5</p>\n<p><strong>What two cubes surround 70?</strong></p>\n"], ["⚡ 30-Second Challenge", "\n<div class=\"challenge-list\">\n  <div>1. √15 → Between <input placeholder=\"__\"> and <input placeholder=\"__\"></div>\n  <div>2. √40 → Between <input placeholder=\"__\"> and <input placeholder=\"__\"></div>\n  <div>3. ∛30 → Between <input placeholder=\"__\"> and <input placeholder=\"__\"></div>\n  <div>4. ∛100 → Between <input placeholder=\"__\"> and <input placeholder=\"__\"></div>\n</div>\n<div class=\"answer-box\">√15: 3–4 &nbsp; | &nbsp; √40: 6–7 &nbsp; | &nbsp; ∛30: 3–4 &nbsp; | &nbsp; ∛100: 4–5</div>\n"], ["🏆 Final Boss", "\n<div class=\"boss\">\n  <div><b>1.</b> Classify −12: Natural / Whole / Integer / Rational / Irrational</div>\n  <div><b>2.</b> Is √36 rational or irrational? Explain.</div>\n  <div><b>3.</b> Is 0.̅45 rational or irrational?</div>\n  <div><b>4.</b> Between which two integers is √55?</div>\n  <div><b>5.</b> Estimate √80 to the nearest integer.</div>\n</div>\n<button class=\"big-reveal\" id=\"bossReveal\">Reveal answers</button>\n<div class=\"answer-box hidden\" id=\"bossAnswers\">\n1. Integer, Rational, Real<br>\n2. Rational, because √36 = 6 = 6/1<br>\n3. Rational<br>\n4. 7 &lt; √55 &lt; 8<br>\n5. √80 ≈ 9\n</div>\n"], ["🎤 Explain It Like a Teacher", "\n<div class=\"explain-card\">\n  <h2>Why is √7 irrational, but √9 rational?</h2>\n  <textarea placeholder=\"Write your explanation here...\"></textarea>\n</div>\n<div class=\"answer-box\">√9 = 3 = 3/1, so √9 is rational. √7 cannot be expressed exactly as a fraction of two integers, so it is irrational.</div>\n"], ["🚪 Exit Ticket", "\n<div class=\"exit\">\n  <div><b>1.</b> Complete: Natural ⊂ ______ ⊂ ______ ⊂ Rational</div>\n  <input placeholder=\"Your answer\">\n  <div><b>2.</b> Is 0.777... rational or irrational?</div>\n  <input placeholder=\"Your answer\">\n  <div><b>3.</b> Between which two integers is √30?</div>\n  <input placeholder=\"Your answer\">\n  <h3>Final question</h3>\n  <p>What is the ONE rule from today's lesson that you think you'll remember?</p>\n  <textarea placeholder=\"Your takeaway...\"></textarea>\n</div>\n"]];
+let idx=0;
+const app=document.getElementById('app');
+const title=document.getElementById('slideTitle'), content=document.getElementById('slideContent');
+const pad=document.getElementById('pad'), counter=document.getElementById('counter'), bar=document.getElementById('bar');
+const notes={};
+
+/* ---- Scratchpad drawing (mouse + touch + stylus via Pointer Events) ---- */
+let ctx, drawing=false, eraseMode=false;
+const INK='#172033', PEN_WIDTH=2.5, ERASER_WIDTH=26;
+const penTool=document.getElementById('penTool'), eraserTool=document.getElementById('eraserTool');
+
+function resizeCanvas(){
+  const rect=pad.getBoundingClientRect();
+  const dpr=window.devicePixelRatio||1;
+  pad.width=Math.max(1,Math.round(rect.width*dpr));
+  pad.height=Math.max(1,Math.round(rect.height*dpr));
+  ctx=pad.getContext('2d');
+  ctx.scale(dpr,dpr);
+  ctx.lineCap='round';
+  ctx.lineJoin='round';
+  loadDrawing(notes[idx]);
+}
+function loadDrawing(dataURL){
+  if(!ctx)return;
+  const rect=pad.getBoundingClientRect();
+  ctx.clearRect(0,0,rect.width,rect.height);
+  if(!dataURL)return;
+  const img=new Image();
+  img.onload=()=>ctx.drawImage(img,0,0,rect.width,rect.height);
+  img.src=dataURL;
+}
+function saveDrawing(){
+  notes[idx]=pad.toDataURL();
+}
+function posFromEvent(e){
+  const rect=pad.getBoundingClientRect();
+  return {x:e.clientX-rect.left,y:e.clientY-rect.top};
+}
+function widthFor(e){
+  if(eraseMode)return ERASER_WIDTH;
+  if(e.pointerType==='pen'&&e.pressure>0)return 1+e.pressure*5;
+  return PEN_WIDTH;
+}
+pad.addEventListener('pointerdown',e=>{
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  drawing=true;
+  pad.setPointerCapture(e.pointerId);
+  const p=posFromEvent(e);
+  ctx.globalCompositeOperation=eraseMode?'destination-out':'source-over';
+  ctx.strokeStyle=INK;
+  ctx.lineWidth=widthFor(e);
+  ctx.beginPath();
+  ctx.moveTo(p.x,p.y);
+  ctx.lineTo(p.x+0.01,p.y+0.01);
+  ctx.stroke();
+  e.preventDefault();
+});
+pad.addEventListener('pointermove',e=>{
+  if(!drawing)return;
+  const p=posFromEvent(e);
+  ctx.lineWidth=widthFor(e);
+  ctx.lineTo(p.x,p.y);
+  ctx.stroke();
+  e.preventDefault();
+});
+function endStroke(e){
+  if(!drawing)return;
+  drawing=false;
+  try{pad.releasePointerCapture(e.pointerId)}catch(_){}
+  saveDrawing();
+}
+pad.addEventListener('pointerup',endStroke);
+pad.addEventListener('pointercancel',endStroke);
+pad.addEventListener('pointerleave',e=>{if(drawing)endStroke(e)});
+penTool.addEventListener('click',()=>{eraseMode=false;penTool.classList.add('active');eraserTool.classList.remove('active')});
+eraserTool.addEventListener('click',()=>{eraseMode=true;eraserTool.classList.add('active');penTool.classList.remove('active')});
+new ResizeObserver(()=>resizeCanvas()).observe(pad);
+
+function render(){
+  title.textContent=slides[idx][0];
+  content.innerHTML=slides[idx][1];
+  counter.textContent=`${idx+1} / ${slides.length}`;
+  bar.style.width=`${((idx+1)/slides.length)*100}%`;
+  loadDrawing(notes[idx]);
+  bindInteractions();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function bindInteractions(){
+  content.querySelectorAll('[data-answer]').forEach(b=>b.addEventListener('click',()=>{
+    const box=b.parentElement.querySelector('.feedback');
+    const correct=b.dataset.answer==='yes';
+    box.textContent=correct?'✓ Correct':'✗ Try again';
+    box.style.color=correct?'#16845b':'#c43d55';
+  }));
+  content.querySelectorAll('[data-correct-choice]').forEach(b=>b.addEventListener('click',()=>{
+    const box=content.querySelector('.feedback');
+    const ok=b.dataset.correctChoice==='true';
+    box.textContent=ok?'✓ Correct!':'✗ Not quite — use the surrounding perfect squares.';
+    box.style.color=ok?'#16845b':'#c43d55';
+  }));
+  content.querySelectorAll('[data-classify]').forEach(b=>b.addEventListener('click',()=>{
+    const correct={Rational:['1','2','5'],Irrational:['3','4']}[b.dataset.classify];
+    const item=b.parentElement, number=item.querySelector('b').textContent, n=number.startsWith('0.5')?'1':number.startsWith('√9')?'2':number.startsWith('√7')?'3':number.startsWith('π')?'4':'5';
+    const ok=correct.includes(n); item.querySelector('span').textContent=ok?'✓':'✗'; item.querySelector('span').style.color=ok?'#16845b':'#c43d55';
+  }));
+  content.querySelectorAll('[data-root]').forEach(b=>b.addEventListener('click',()=>{
+    const v=b.dataset.root; document.getElementById('rootresult').textContent=(v==='2'||v==='5'||v==='6')?'✓ Rational square root: integer answer.':'✗ Not an integer square root: irrational.';
+  }));
+  content.querySelectorAll('[data-calc]').forEach(b=>b.addEventListener('click',()=>b.nextElementSibling.textContent=b.dataset.calc));
+  content.querySelectorAll('[data-toggle]').forEach(b=>b.addEventListener('click',()=>b.classList.toggle('selected')));
+  content.querySelectorAll('.check-inputs').forEach(b=>b.addEventListener('click',()=>{
+    const inputs=[...content.querySelectorAll('input[data-correct]')];
+    let score=0; inputs.forEach(i=>{const ok=i.value.trim().toLowerCase()===i.dataset.correct.toLowerCase(); i.style.borderColor=ok?'#16845b':'#c43d55'; if(ok)score++});
+    b.nextElementSibling.textContent=`${score} / ${inputs.length} correct`;
+  }));
+  const r=document.getElementById('root20slider'), o=document.getElementById('root20out');
+  if(r){r.addEventListener('input',()=>o.textContent=(r.value/10).toFixed(1))}
+  ['root9','root16','bossReveal'].forEach(id=>{const b=document.getElementById(id); if(b)b.addEventListener('click',()=>{const target=document.getElementById(id==='root9'?'root9answer':id==='root16'?'root16answer':'bossAnswers');target.classList.toggle('hidden')})});
+  content.querySelectorAll('[data-reveal]').forEach(b=>b.addEventListener('click',()=>document.getElementById('diagnostic').textContent=`${b.textContent}: part of the real-number family.`));
+}
+document.getElementById('prev').addEventListener('click',()=>{if(idx>0){saveDrawing();idx--;render()}});
+document.getElementById('next').addEventListener('click',()=>{if(idx<slides.length-1){saveDrawing();idx++;render()}});
+document.getElementById('clearPad').addEventListener('click',()=>{const rect=pad.getBoundingClientRect();ctx.clearRect(0,0,rect.width,rect.height);notes[idx]=''});
+document.getElementById('savePad').addEventListener('click',()=>{saveDrawing();document.getElementById('saveStatus').textContent='Saved for this slide ✓';setTimeout(()=>document.getElementById('saveStatus').textContent='',1200)});
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;if(e.key==='ArrowRight')document.getElementById('next').click();if(e.key==='ArrowLeft')document.getElementById('prev').click()});
+render();
+</script>
+</body></html>
